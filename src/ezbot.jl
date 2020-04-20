@@ -9,12 +9,13 @@ module ezbot
     using Indicators
     using PyCall
     using Formatting
-    using Iterators
+    using IterTools
     using ScikitLearn
     using PyPlot
-    using Base.Dates
+    using Dates
 
-    @sk_import preprocessing: StandardScaler
+    ScikitLearn.Skcore.import_sklearn() = PyCall.pyimport_conda("sklearn", "scikit-learn")
+
     @sk_import preprocessing: MinMaxScaler
     @sk_import neural_network: BernoulliRBM
     @sk_import manifold: SpectralEmbedding
@@ -30,6 +31,8 @@ module ezbot
     global ibtc, client
     ibtc= 0.0012
     client = bnc.Client(api_key, api_secret, Dict([:"verify" => false, :"timeout" =>90]))
+
+    pygui(true)
 
     export client, ibtc, overlook, look, play
 

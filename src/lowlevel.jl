@@ -1,3 +1,11 @@
+using Indicators
+using PyCall
+using Formatting
+using IterTools
+using ScikitLearn
+using PyPlot
+using Dates
+
 
 function centers(klines, n::Int64=3)
     num=length(klines[:,1])
@@ -58,8 +66,8 @@ function mns(klines, n::Int64=7, m::Int64=14,α::Float64=0.085)
         if j <= m+1
             push!(Mns1, NaN); push!(Mns2, NaN); push!(Mns3, NaN)
         else
-            mom1 = sum((klines[j-n:j, 5] - klines[j-n-1:j-1, 5]) )/sum(abs(klines[j-n:j, 5] - klines[j-n-1:j-1, 5]))
-            mom2 = sum((klines[j-m:j, 5] - klines[j-m-1:j-1, 5]) )/sum(abs(klines[j-m:j, 5] - klines[j-m-1:j-1, 5]))
+            mom1 = sum((klines[j-n:j, 5] - klines[j-n-1:j-1, 5]) )/sum(abs.(klines[j-n:j, 5] - klines[j-n-1:j-1, 5]))
+            mom2 = sum((klines[j-m:j, 5] - klines[j-m-1:j-1, 5]) )/sum(abs.(klines[j-m:j, 5] - klines[j-m-1:j-1, 5]))
             mom3 = mom1 - mom2
 
             push!(Mns1, mom1); push!(Mns2, mom2);push!(Mns3, mom3)
@@ -69,7 +77,7 @@ function mns(klines, n::Int64=7, m::Int64=14,α::Float64=0.085)
 end
 
 function getdata(; coin="BTCUSDT", candlesize="30m", candlesize_=30, num=300, qty=1)
-     klines = Array{Float64}(0, 7)
+     klines = Array{Float64, 2}(undef, 0, 7)
      fromts = floor(Int64,time()*1000)-1000
      for n in 1:qty
          kl = client[:get_klines](symbol=coin, interval = candlesize, startTime = fromts - candlesize_*60000*qty*num + (n-1)candlesize_*60000*num , endTime=fromts - candlesize_*60000*qty*num+ n*candlesize_*60000*num, limit=num)#fromts - (qty-n)*3*60000
@@ -109,7 +117,7 @@ function compute(data)
         Cs = centers(data,3)[40:end,1]
         Cm = centers(data,3)[40:end,2]
         Ci = centers(data,3)[40:end,3]
-        Css = exp((Cs - Cm)./(Cm - Ci)).*(prices - Cm)
+        Css = exp.((Cs - Cm)./(Cm - Ci)).*(prices - Cm)
 
         Vss = Vs(data, 7, 14)[40:end, 3]
         Mns = mns(data, 7, 14)[40:end, 3]
