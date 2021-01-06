@@ -23,8 +23,10 @@ function calculate(overdata,coins, rsi_, volume)
             data = nothing
             try
                 data = getdata(coin=coins[i][1], num=140, qty=1)
+                #println(length(data))
             catch er
-                println("Something went wrong while getting the data from the symbol $(coins[i][1])")
+                #println("Something went wrong while getting the data from the symbol $(coins[i][1])")
+                #println(data)
                 continue
             end
             O = data[:,2]

@@ -1,12 +1,3 @@
-using Indicators
-using PyCall
-using Formatting
-using IterTools
-using ScikitLearn
-using PyPlot
-using Dates
-
-
 function centers(klines, n::Int64=3)
     num=length(klines[:,1])
     Cs=[]
