@@ -9,7 +9,8 @@ using PyPlot
 using ScikitLearn
 
 const urllib3 = PyNULL()
-const client = PyNULL()
+#const client = PyNULL()
+global client
 const bnc = PyNULL()
 const bws = PyNULL()
 const ben = PyNULL()
