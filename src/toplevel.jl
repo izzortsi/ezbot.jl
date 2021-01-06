@@ -1,4 +1,7 @@
-
+pygui(true)
+"""
+function look(; coin="EOSBTC", candlesize="5m", candlesize_=5, num=450, qty=1)
+"""
 function look(; coin="EOSBTC", candlesize="5m", candlesize_=5, num=450, qty=1)
 
     BRBM,BRBMExtract, SpeClust, SpeClustLabels, X, data = train(coin=coin, candlesize=candlesize, candlesize_=candlesize_,num=num,qty=qty )
@@ -37,6 +40,9 @@ function look(; coin="EOSBTC", candlesize="5m", candlesize_=5, num=450, qty=1)
     return
 end
 
+"""
+function play(; coin="EOSBTC", candlesize::String="5m",candlesize_::Int64=5,stop::Bool=false, bought::Bool=false, sqtd::Float64=0.0, inft::Float64=0.4, supt::Float64=0.6, alpha1::Float64=0.4, alpha2::Float64=0.1, beta1::Float64 = 0.09, beta2::Float64 = 0.2, γ::Float64=0.5)
+"""
 function play(; coin="EOSBTC", candlesize::String="5m",candlesize_::Int64=5,stop::Bool=false, bought::Bool=false, sqtd::Float64=0.0, inft::Float64=0.4, supt::Float64=0.6, alpha1::Float64=0.4, alpha2::Float64=0.1, beta1::Float64 = 0.09, beta2::Float64 = 0.2, γ::Float64=0.5)
     while stop == false
         try

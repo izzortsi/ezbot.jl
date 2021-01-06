@@ -17,21 +17,11 @@ using ScikitLearn
 @pyimport binance.enums as ben 
 
 @pyimport urllib3
-urllib3.disable_warnings()
 
 include("marketoverview.jl")
 include("toplevel.jl")
 include("midlevel.jl")
 include("lowlevel.jl")
-
-api_key = ""
-api_secret = ""
-
-#global ibtc, client
-ibtc = 0.0012
-client = bnc.Client(api_key, api_secret, Dict([:"verify" => false, :"timeout" => 90]))
-
-pygui(true)
 
 export client, ibtc, overlook, look, play
 

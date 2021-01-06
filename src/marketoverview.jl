@@ -1,3 +1,5 @@
+urllib3.disable_warnings()
+
 function preselec(overdata, pct1, pct2)
     presel=[]
     for i in 1:length(overdata)
@@ -43,6 +45,9 @@ function calculate(overdata,coins, rsi_, volume)
     return out
 end
 
+"""
+function overlook(; pct1=-0.1, pct2=1.0,rsi_=50.0, volume=1200)
+"""
 function overlook(; pct1=-0.1, pct2=1.0,rsi_=50.0, volume=1200)
 
     overdata = client[:get_ticker]()
