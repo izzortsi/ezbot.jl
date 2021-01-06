@@ -1,7 +1,7 @@
 pygui(true)
 
 function initialize(; api_key = "", api_secret = "", ibtc = 0.0012)
-    return bnc.Client(api_key, api_secret, Dict([:"verify" => false, :"timeout" => 90]))
+    copy!(client, bnc.Client(api_key, api_secret, Dict([:"verify" => false, :"timeout" => 90])))
 end
 
 """
