@@ -13,19 +13,20 @@ const bnc = PyNULL()
 const bws = PyNULL()
 const ben = PyNULL()
 
-include("marketoverview.jl")
-include("toplevel.jl")
-include("midlevel.jl")
-include("lowlevel.jl")
 
 function __init__()
     copy!(urllib3, pyimport("urllib3"))
     urllib3.disable_warnings()
-
+    
     copy!(bnc, pyimport("binance.client"))
     copy!(bws, pyimport("binance.websockets"))
     copy!(ben, pyimport("binance.enums"))
 end
+
+include("marketoverview.jl")
+include("toplevel.jl")
+include("midlevel.jl")
+include("lowlevel.jl")
 
 export client, ibtc, overlook, look, play
 
