@@ -1,7 +1,3 @@
-
-#@pyimport urllib3
-#urllib3.disable_warnings()
-
 function preselec(overdata, pct1, pct2)
     presel=[]
     for i in 1:length(overdata)
