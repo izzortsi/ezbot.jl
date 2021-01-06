@@ -9,10 +9,10 @@ using PyPlot
 using ScikitLearn
 
 const urllib3 = PyNULL()
+const client = PyNULL()
 const bnc = PyNULL()
 const bws = PyNULL()
 const ben = PyNULL()
-
 
 function __init__()
     copy!(urllib3, pyimport("urllib3"))
@@ -28,7 +28,7 @@ include("toplevel.jl")
 include("midlevel.jl")
 include("lowlevel.jl")
 
-export client, ibtc, overlook, look, play
+export initialize, overlook, look, play
 
 end
 

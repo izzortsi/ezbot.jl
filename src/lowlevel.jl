@@ -4,11 +4,7 @@
 @sk_import neural_network:BernoulliRBM
 @sk_import manifold:SpectralEmbedding
 
-api_key = ""
-api_secret = ""
 
-ibtc = 0.0012
-client = bnc.Client(api_key, api_secret, Dict([:"verify" => false, :"timeout" => 90]))
 
 function centers(klines, n::Int64=3)
     num=length(klines[:,1])
