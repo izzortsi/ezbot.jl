@@ -1,16 +1,8 @@
-name = "ezbot"
-uuid = "9689bb27-685d-5601-beb6-19b936ead12f"
-authors = ["Igor Strozzi <istrozzi@ufrj.br>"]
-version = "0.0.1"
-
 [deps]
-Formatting = "59287772-0a20-5a39-b81b-1366585eb4c0"
-IterTools = "c8e1da08-722c-5040-9ed9-7db0dc04731e"
 Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
+Formatting = "59287772-0a20-5a39-b81b-1366585eb4c0"
 Indicators = "70c4c096-89a6-5ec6-8236-da8aa3bd86fd"
+IterTools = "c8e1da08-722c-5040-9ed9-7db0dc04731e"
 PyCall = "438e738f-606a-5dbb-bf0a-cddfbfd45ab0"
 PyPlot = "d330b81b-6aea-500a-939a-2ce795aea3ee"
 ScikitLearn = "3646fa90-6ef7-5e7e-9f22-8aca16db6324"
-
-[compat]
-julia = "0.7, 1.0"
