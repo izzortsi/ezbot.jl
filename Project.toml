@@ -1,3 +1,8 @@
+name = "ezbot"
+uuid = "8bcfab18-271e-41f8-ab0f-3bc587a2c458"
+authors = ["Igor Strozzi <istrozzi@matematica.ufrj.br>"]
+version = "0.1.0"
+
 [deps]
 Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
 Formatting = "59287772-0a20-5a39-b81b-1366585eb4c0"
