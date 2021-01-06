@@ -1,6 +1,4 @@
-@pyimport binance.client as bnc
-@pyimport binance.websockets as bws
-@pyimport binance.enums as ben 
+
 
 @sk_import preprocessing:MinMaxScaler
 @sk_import neural_network:BernoulliRBM

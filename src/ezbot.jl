@@ -9,6 +9,9 @@ using PyPlot
 using ScikitLearn
 
 const urllib3 = PyNULL()
+const bnc = PyNULL()
+const bws = PyNULL()
+const ben = PyNULL()
 
 include("marketoverview.jl")
 include("toplevel.jl")
@@ -18,6 +21,10 @@ include("lowlevel.jl")
 function __init__()
     copy!(urllib3, pyimport("urllib3"))
     urllib3.disable_warnings()
+
+    copy!(bnc, pyimport("binance.client"))
+    copy!(bws, pyimport("binance.websockets"))
+    copy!(ben, pyimport("binance.enums"))
 end
 
 export client, ibtc, overlook, look, play
