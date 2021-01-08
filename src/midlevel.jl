@@ -7,17 +7,12 @@ function operate(; coin="EOSBTC", candlesize::String="15m",candlesize_::Int64=5,
     ticksize = max(length(format(float(client[:get_symbol_info](symbol=coin)[:"filters"][1][:"tickSize"]), stripzeros=true))-2, 1)
     stepsize = max(length(format(float(client[:get_symbol_info](symbol=coin)[:"filters"][2][:"stepSize"]), stripzeros=true))-2, 1)
 
-    println(ticksize)
-    println(stepsize)
+    #println(ticksize)
+    #println(stepsize)
 
     border = 0
     bprice = 0
-
-
-
     sprice = 0
-
-
 
     while stop == false
         if (t1 - t0)%30000 == 0
@@ -39,7 +34,7 @@ function operate(; coin="EOSBTC", candlesize::String="15m",candlesize_::Int64=5,
                     catch er
                         println(qtty)
 
-                        return println("Buy error. Is ibtc properly set? Error: $(er)")
+                        return println("Buy error. Is initial_btc properly set? Error: $(er)")
                     end
 
                     qtty = parse(Float64, format(qtty, precision=stepsize))

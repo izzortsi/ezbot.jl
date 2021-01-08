@@ -12,7 +12,7 @@ function preselec(overdata, pct1, pct2)
 end
 
 
-function calculate(overdata,coins, rsi_, volume)
+function calculate(coins, rsi_, volume, warnings)
     out = Array{Float64, 2}(undef, 0, 3)
     for i in 1:length(coins)
         #println(coins[i][1][end-2:end])
@@ -23,10 +23,10 @@ function calculate(overdata,coins, rsi_, volume)
             data = nothing
             try
                 data = getdata(coin=coins[i][1], num=140, qty=1)
-                #println(length(data))
             catch er
-                #println("Something went wrong while getting the data from the symbol $(coins[i][1])")
-                #println(data)
+                if warnings == true
+                    println("Something went wrong while getting the data from the symbol $(coins[i][1])")
+                end
                 continue
             end
             O = data[:,2]
@@ -44,13 +44,14 @@ function calculate(overdata,coins, rsi_, volume)
 end
 
 """
-function overlook(; pct1=-0.1, pct2=1.0,rsi_=50.0, volume=1200)
+function olook(; pct1=-0.1, pct2=1.0,rsi_=50.0, volume=1200, warnings==false)
+    mostra as coins cuja variação de preço tá entre `pct1` e `pct2`, RSI14 é menor que `rsi_` e volume maior que `volume`
 """
-function overlook(; pct1=-0.1, pct2=1.0,rsi_=50.0, volume=1200)
+function olook(; pct1=-0.1, pct2=1.0,rsi_=50.0, volume=1200, warnings=false)
 
     overdata = client[:get_ticker]()
     presel = preselec(overdata,pct1, pct2)
-    M = calculate(overdata, presel, rsi_, volume)
+    M = calculate(overdata, presel, rsi_, volume, warnings)
     println("symbol, %change, RSI14")
     return M
 end

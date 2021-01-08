@@ -1,37 +1,39 @@
 module ezbot
 
-using Dates
-using Formatting
-using Indicators
-using IterTools
-using PyCall
-using PyPlot
-using ScikitLearn
+    include("marketoverview.jl")
+    include("toplevel.jl")
+    include("midlevel.jl")
+    include("lowlevel.jl")
 
-const urllib3 = PyNULL()
-#const client = PyNULL()
-global client
-const bnc = PyNULL()
-const bws = PyNULL()
-const ben = PyNULL()
 
-function __init__()
-    copy!(urllib3, pyimport("urllib3"))
+    using Indicators
+    using PyCall
+    using Formatting
+    using IterTools
+    using ScikitLearn
+    using PyPlot
+    using Dates
+
+    #ScikitLearn.Skcore.import_sklearn() = PyCall.pyimport_conda("sklearn", "scikit-learn")
+
+    @sk_import preprocessing: MinMaxScaler
+    @sk_import neural_network: BernoulliRBM
+    @sk_import manifold: SpectralEmbedding
+
+    @pyimport urllib3
+
     urllib3.disable_warnings()
-    
-    copy!(bnc, pyimport("binance.client"))
-    copy!(bws, pyimport("binance.websockets"))
-    copy!(ben, pyimport("binance.enums"))
+
+    @pyimport binance.client as bnc
+    @pyimport binance.websockets as bws
+    @pyimport binance.enums as ben
+
+    const client = PyNULL()
+
+    global api_key, api_secret, initial_btc
+
+    pygui(true)
+
+    export init, client, initial_btc, olook, look, play
+
 end
-
-include("marketoverview.jl")
-include("toplevel.jl")
-include("midlevel.jl")
-include("lowlevel.jl")
-
-export initialize, overlook, look, play
-
-end
-
-
-

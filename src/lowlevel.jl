@@ -1,9 +1,10 @@
-
-
-@sk_import preprocessing:MinMaxScaler
-@sk_import neural_network:BernoulliRBM
-@sk_import manifold:SpectralEmbedding
-
+using Indicators
+using PyCall
+using Formatting
+using IterTools
+using ScikitLearn
+using PyPlot
+using Dates
 
 
 function centers(klines, n::Int64=3)
