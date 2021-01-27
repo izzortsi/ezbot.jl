@@ -8,11 +8,12 @@ function init(; key = "", secret = "", ibtc=0.0012)
 
     #key, secret, ibtc = api_key, api_secret, initial_btc
 
+    @pyimport binance.client as bnc
     
     global initial_btc, api_key, api_secret
 
     api_key, api_secret, initial_btc = key, secret, ibtc
-
+    
     copy!(client, bnc.Client(api_key, api_secret, Dict([:"verify" => false, :"timeout" =>90])))
 
 end
