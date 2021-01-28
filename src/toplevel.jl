@@ -7,8 +7,6 @@ inicia o client, opcionalmente com a API key e secret, que são necessárias pra
 function init(; key = "", secret = "", ibtc=0.0012)
 
     #key, secret, ibtc = api_key, api_secret, initial_btc
-
-    @pyimport binance.client as bnc
     
     global initial_btc, api_key, api_secret
 
