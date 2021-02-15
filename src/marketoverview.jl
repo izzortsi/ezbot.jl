@@ -51,7 +51,7 @@ function olook(; pct1=-0.1, pct2=1.0,rsi_=50.0, volume=1200, warnings=false)
 
     overdata = client[:get_ticker]()
     presel = preselec(overdata,pct1, pct2)
-    M = calculate(overdata, presel, rsi_, volume, warnings)
+    M = calculate(presel, rsi_, volume, warnings)
     println("symbol, %change, RSI14")
     return M
 end
