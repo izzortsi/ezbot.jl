@@ -1,5 +1,5 @@
 name = "ezbot"
-uuid = "8bcfab18-271e-41f8-ab0f-3bc587a2c458"
+uuid = "8e0593ca-fb33-40ec-bb9f-140c60a8e337"
 authors = ["Igor Strozzi <istrozzi@matematica.ufrj.br>"]
 version = "0.1.0"
 
